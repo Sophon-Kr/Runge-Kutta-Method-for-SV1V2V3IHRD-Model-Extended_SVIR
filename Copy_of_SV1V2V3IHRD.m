@@ -10,7 +10,7 @@ omega2 = 0.001;
 omega3 = 0.0001;
 epsilon1 = 0.641; 
 epsilon2 = 0.704;
-epsilon3 = 0.790;
+epsilon3 = 0.767;
 alpha = 0.2;
 lamda = 0.1;
 zeta = 0.015;
@@ -18,16 +18,6 @@ mu = 0.000036529;
 h = 0.0001;  
 tfinal = 10;
 N = ceil(tfinal/h); % Calculates upto y(10000) ceil(tfinal/h)
-
-% #initial condition equations# %
-f1 = @ (t, S,V_1,V_2,V_3,I,H,R) rho+(eta*R)-(beta*S*I)-(omega1*S)-(mu*S); %s node 
-f2 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega1*S)-(omega2*V_1)-(beta*(1-epsilon1)*V_1*I)-(mu*V_1); %v1 node 
-f3 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega2*V_1)-(omega3*V_2)-(beta*(1-epsilon2)*V_2*I)-(mu*V_2); %v2 node 
-f4 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega3*V_2)-(beta*(1-epsilon3)*V_3*I)-(mu*V_3); %v3 node 
-f5 = @ (t, S,V_1,V_2,V_3,I,H,R) (beta*S*I)+(beta*(1-epsilon1)*V_1*I)+(beta*(1-epsilon2)*V_2*I)+(beta*(1-epsilon3)*V_3*I)-(alpha*I)-(lamda*I)-(zeta*I) ; %i node 
-f6 = @ (t, S,V_1,V_2,V_3,I,H,R) (alpha*I)-(lamda*I)-(zeta*H) ; %h node 
-f7 = @ (t, S,V_1,V_2,V_3,I,H,R) (lamda*I)+(lamda*I)-(mu*R)-(eta*R) ; %r node 
-
 
 %%% #initial conditions# %%%
 t(1) = 0;
@@ -46,6 +36,16 @@ I0= 150000;
 H0= 150000;
 R0=150000;
 %step size
+
+
+% #initial condition equations# %
+f1 = @ (t, S,V_1,V_2,V_3,I,H,R) rho+(eta*R)-(beta*S*I)-(omega1*S)-(mu*S); %s node 
+f2 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega1*S)-(omega2*V_1)-(beta*(1-epsilon1)*V_1*I)-(mu*V_1); %v1 node 
+f3 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega2*V_1)-(omega3*V_2)-(beta*(1-epsilon2)*V_2*I)-(mu*V_2); %v2 node 
+f4 = @ (t, S,V_1,V_2,V_3,I,H,R) (omega3*V_2)-(beta*(1-epsilon3)*V_3*I)-(mu*V_3); %v3 node 
+f5 = @ (t, S,V_1,V_2,V_3,I,H,R) (beta*S*I)+(beta*(1-epsilon1)*V_1*I)+(beta*(1-epsilon2)*V_2*I)+(beta*(1-epsilon3)*V_3*I)-(alpha*I)-(lamda*I)-(zeta*I) ; %i node 
+f6 = @ (t, S,V_1,V_2,V_3,I,H,R) (alpha*I)-(lamda*I)-(zeta*H) ; %h node 
+f7 = @ (t, S,V_1,V_2,V_3,I,H,R) (lamda*I)+(lamda*I)-(mu*R)-(eta*R) ; %r node 
 
 
 
