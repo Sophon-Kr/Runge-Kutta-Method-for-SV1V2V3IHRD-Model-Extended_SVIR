@@ -2,7 +2,7 @@ clc;                                   % Clears the screen
 clear all;
 
 %%%% #specifying Parameters used# %%%%
-rho = 66186727; 
+rho = 66.186e6; 
 eta = 0.09;
 beta = 2.27;
 omega1 = 0.004;
@@ -14,9 +14,9 @@ epsilon3 = 0.767;
 alpha = 0.2;
 lamda = 0.1;
 zeta = 0.015;
-mu = 0.000036529;
+mu = 3.6529e-5;
 h= 0.0001;  
-tfinal = 10;
+tfinal = 100;
 N = ceil(tfinal/h); % Calculates upto y(10000) ceil(tfinal/h)
 
 %%%% specifying Parameters used %%%%
